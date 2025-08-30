@@ -35,3 +35,20 @@ Criar uma plataforma centralizada para a igreja, com:
 git clone https://github.com/SEU-USUARIO/adfidelidade.git
 cd adfidelidade
 
+🚀 Deploy
+
+O projeto está em produção no link:
+👉 https://adfidelidade.vercel.app
+O deploy é feito automaticamente pela Vercel a cada push no repositório GitHub.
+
+🔒 Segurança
+
+Uso de Row Level Security (RLS) no Supabase para proteger dados sensíveis.
+Apenas administradores podem criar/editar eventos e posts.
+Usuários comuns podem se cadastrar, visualizar eventos e se inscrever como voluntários.
+
+👨‍💻 Acadêmico Responsável
+
+Nome: Rafael Felix da Silva
+Curso: Análise e Desenvolvimento de Sistemas
+Atividade Extensionista – Projeto: Site Igreja Ad Fidelidade
