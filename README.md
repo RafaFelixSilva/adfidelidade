@@ -1,12 +1,37 @@
-# React + Vite
+# 🌐 Projeto Site Igreja Ad Fidelidade
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto faz parte das **Atividades Extensionistas** do curso de **Análise e Desenvolvimento de Sistemas**.  
+O objetivo é desenvolver um **site completo e responsivo** para a Igreja Ad Fidelidade, oferecendo recursos que facilitem a organização, o engajamento e a participação dos membros da congregação.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Objetivo do Projeto
+Criar uma plataforma centralizada para a igreja, com:
+- 📅 **Calendário de eventos** e agenda de cultos/serviços
+- 👥 **Cadastro de usuários** com autenticação segura
+- 🎶 **Gerenciamento de louvores**
+- 📺 **Transmissão ao vivo** (embed de YouTube Live)
+- 📰 **Blog e notícias**
+- 🙋 **Gestão de voluntários**
+- 💳 **Doações online**
+- 📸 **Galeria de fotos**
+- 📍 **Contato e localização**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tecnologias Utilizadas
+- [React](https://react.dev/) (frontend SPA)
+- [Vite](https://vitejs.dev/) (bundler rápido)
+- [Supabase](https://supabase.com/) (backend: banco PostgreSQL + autenticação + policies RLS)
+- [TailwindCSS](https://tailwindcss.com/) (estilização rápida e responsiva)
+- [Vercel](https://vercel.com/) (deploy gratuito e automático)
+
+---
+
+## ⚙️ Como Rodar Localmente
+
+### 1. Clonar o repositório
+```bash
+git clone https://github.com/SEU-USUARIO/adfidelidade.git
+cd adfidelidade
+
