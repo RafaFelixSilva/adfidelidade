@@ -3,6 +3,7 @@ import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 import Home from './pages/Home.jsx';
 import AuthPage from './pages/AuthPage.jsx';
+import VolunteerPage from './pages/VolunteerPage.jsx';
 import EventsPage from './pages/EventsPage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
 
@@ -32,6 +33,7 @@ export default function App() {
       <header className="flex gap-4 items-center mb-6">
         <Link to="/">Ad Fidelidade</Link>
         <Link to="/events">Eventos</Link>
+        <Link to="/volunteer">Inscrição de Voluntários</Link>
         <Link to="/live">Ao Vivo</Link>
         <Link to="/donate">Doações</Link>
         {session ? (
@@ -45,6 +47,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/volunteer" element={<VolunteerPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/admin" element={<Protected><AdminPage /></Protected>} />
         <Route path="/live" element={<iframe title="YouTube Live" width="100%" height="480" src="https://www.youtube.com/embed/VrpsnKlyThg?si=DuI_5oD9wqYNhIQX" allowFullScreen />} />
