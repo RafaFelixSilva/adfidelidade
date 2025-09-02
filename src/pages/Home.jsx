@@ -1,39 +1,68 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
-import dayjs from "dayjs";
-
 export default function Home() {
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    supabase
-      .from("events")
-      .select("*")
-      .order("starts_at", { ascending: true })
-      .then(({ data, error }) => {
-        if (error) console.error(error);
-        else setEvents(data ?? []);
-      });
-  }, []);
+  const eventos = [
+    {
+      id: 1,
+      title: "Culto de Celebração",
+      date: "Domingo, 19h",
+      desc: "Venha adorar conosco e celebrar a presença de Deus.",
+      local: "Igreja Ad Fidelidade - Auditório Principal",
+    },
+    {
+      id: 2,
+      title: "Ensaio do Louvor",
+      date: "Sábado, 16h",
+      desc: "Momento de preparação e ensaio para o ministério de louvor.",
+      local: "Sala de Música",
+    },
+    {
+      id: 3,
+      title: "Escola Bíblica Infantil",
+      date: "Domingo, 9h",
+      desc: "Atividades bíblicas e recreativas para crianças.",
+      local: "Sala Infantil",
+    },
+  ];
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Próximos Eventos</h1>
-      {events.length === 0 ? (
-        <p className="text-gray-500">Nenhum evento cadastrado.</p>
-      ) : (
-        <div className="grid gap-4">
-          {events.map((ev) => (
-            <div key={ev.id} className="p-4 bg-white shadow rounded-lg">
-              <h2 className="text-xl font-semibold">{ev.title}</h2>
-              <p>{dayjs(ev.starts_at).format("DD/MM/YYYY HH:mm")}</p>
-              <p>{ev.location}</p>
-              <p className="text-gray-600">{ev.description}</p>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Header */}
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-center py-20">
+        <h2 className="text-4xl font-bold mb-4">Bem-vindo à Igreja Ad Fidelidade</h2>
+        <p className="text-lg max-w-2xl mx-auto">
+          Uma comunidade acolhedora onde você e sua família podem crescer na fé, servir e compartilhar o amor de Cristo.
+        </p>
+      </section>
+
+      {/* Eventos */}
+      <main className="flex-1 max-w-6xl mx-auto px-6 py-12">
+        <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">Próximos Eventos</h3>
+        <div className="grid gap-6 md:grid-cols-3">
+          {eventos.map(ev => (
+            <div key={ev.id} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
+              <h4 className="text-xl font-semibold text-blue-700">{ev.title}</h4>
+              <p className="text-gray-600 text-sm">{ev.date} • {ev.local}</p>
+              <p className="mt-2 text-gray-700">{ev.desc}</p>
+              <button className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                Saiba mais
+              </button>
             </div>
           ))}
         </div>
-      )}
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-gray-300 py-6 mt-12">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>© {new Date().getFullYear()} Igreja Ad Fidelidade. Todos os direitos reservados.</p>
+          <div className="flex gap-4">
+            <a href="#" className="hover:text-white">Facebook</a>
+            <a href="#" className="hover:text-white">YouTube</a>
+            <a href="#" className="hover:text-white">Instagram</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
-

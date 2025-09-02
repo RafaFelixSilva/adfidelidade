@@ -33,12 +33,14 @@ export default function App() {
   return (
   <div className='min-h-screen bg-gray-50'>  
     <div className="max-w-5xl mx-auto p-4">
-      <header className="flex gap-4 items-center mb-6">
-        <Link to="/">Ad Fidelidade</Link>
-        <Link to="/events">Eventos</Link>
-        <Link to="/volunteer">Inscrição de Voluntários</Link>
-        <Link to="/live">Ao Vivo</Link>
-        <Link to="/donate">Doações</Link>
+      <header className="flex justify-between items-center bg-white shadow p-4 rounded-lg mb-6">
+        <h1 className='text-xl font-bold text-blue-700'>Ad Fidelidade</h1>
+        <nav className='flex gap-4'>
+        <Link className='hover:text-blue-600' to="/">Home</Link>
+        <Link className='hover:text-blue-600' to="/events">Eventos</Link>
+        <Link className='hover:text-blue-600' to="/volunteer">Inscrição de Voluntários</Link>
+        <Link className='hover:text-blue-600' to="/live">Ao Vivo</Link>
+        <Link className='hover:text-blue-600' to="/donate">Doações</Link>
 
         <div className="relative group">
     <button className="hover:text-blue-600">Louvor ▾</button>
@@ -54,10 +56,11 @@ export default function App() {
 
         {session ? (
           <>
-            <Link to="/admin">Admin</Link>
+            <Link className='hover:text-blue-600' to="/admin">Admin</Link>
             <button onClick={() => supabase.auth.signOut()} className='text-red-600 font-medium'>Sair</button>
           </>
-        ) : <Link to="/auth">Entrar</Link>}
+        ) : <Link className='bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700' to="/auth">Entrar</Link>}
+        </nav>
       </header>
 
       <Routes>

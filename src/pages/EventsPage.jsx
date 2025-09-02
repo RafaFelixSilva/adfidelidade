@@ -34,4 +34,17 @@ export default function EventsPage() {
       )}
     </div>
   );
+
+  {/* Footer */}
+      <footer className="bg-gray-800 text-gray-300 py-6 mt-12">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>© {new Date().getFullYear()} Igreja Ad Fidelidade. Todos os direitos reservados.</p>
+          <div className="flex gap-4">
+            <a href="#" className="hover:text-white">Facebook</a>
+            <a href="#" className="hover:text-white">YouTube</a>
+            <a href="#" className="hover:text-white">Instagram</a>
+          </div>
+        </div>
+      </footer>
+    
 }
