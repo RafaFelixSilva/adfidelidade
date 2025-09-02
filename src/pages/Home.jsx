@@ -2,24 +2,24 @@ export default function Home() {
   const eventos = [
     {
       id: 1,
-      title: "Culto de Celebração",
-      date: "Domingo, 19h",
-      desc: "Venha adorar conosco e celebrar a presença de Deus.",
+      title: "Culto da Palavra",
+      date: "Quinta-feira, 20h",
+      desc: "Venha adorar conosco e aprender a palavra de Deus.",
       local: "Igreja Ad Fidelidade - Auditório Principal",
     },
     {
       id: 2,
-      title: "Ensaio do Louvor",
-      date: "Sábado, 16h",
-      desc: "Momento de preparação e ensaio para o ministério de louvor.",
-      local: "Sala de Música",
+      title: "Culto da Família",
+      date: "Sábado, 18h",
+      desc: "Venha cultuar a Deus junto com a sua família e presenciar a presenca de Deus!",
+      local: "Igreja Ad Fidelidade - Auditório Principal",
     },
     {
       id: 3,
-      title: "Escola Bíblica Infantil",
-      date: "Domingo, 9h",
-      desc: "Atividades bíblicas e recreativas para crianças.",
-      local: "Sala Infantil",
+      title: "Circulo de Oracao",
+      date: "Quarta-feira, 18h",
+      desc: "Oracao Online para todos os irmaos e irmas!",
+      local: "Google Meet",
     },
   ];
 
