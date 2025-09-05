@@ -66,7 +66,7 @@ export default function App() {
             </button>
 
             {/* Menu Desktop */}
-            <nav className='hidden md:flex gap-6 items-center'>
+            <nav className='hidden md:flex gap-6 items-center text-gray-700 font-medium'>
               <Link className='hover:text-blue-600' to="/">Home</Link>
               <Link className='hover:text-blue-600' to="/events">Eventos</Link>
               <Link className='hover:text-blue-600' to="/volunteer">Inscrição de Voluntários</Link>
@@ -75,8 +75,8 @@ export default function App() {
 
               {/* Dropdown Louvor (desktop hover) */}
               <div className="relative group">
-                <button className="hover:text-blue-600">Louvor ▾</button>
-                <div className="absolute hidden group-hover:block bg-white shadow rounded p-2 mt-1">
+                <button className="hover:text-blue-600 flex items-center">Louvor ▾</button>
+                <div className="absolute left-0 hidden group-hover:block bg-white border shadow-lg rounded p-2 mt-1 min-w-[160px] z-50">
                   <Link to="/rehearsals" className="block px-2 py-1 hover:bg-gray-100 rounded">
                     Ensaios
                   </Link>
