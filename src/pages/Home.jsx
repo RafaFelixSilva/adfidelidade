@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   const eventos = [
     {
@@ -28,11 +30,14 @@ export default function Home() {
       {/* Header */}
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-center py-20">
+      <section className="relative text-white text-center py-20 bg-center bg-cover" style={{backgroundImage:"url('/src/images/adFidelidadeLogoPreta.jpg"}}>
+      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="relative z-10">
         <h2 className="text-4xl font-bold mb-4">Bem-vindo à Igreja Ad Fidelidade</h2>
         <p className="text-lg max-w-2xl mx-auto">
           Uma comunidade acolhedora onde você e sua família podem crescer na fé, servir e compartilhar o amor de Cristo.
         </p>
+      </div>  
       </section>
 
       {/* Eventos */}
@@ -44,9 +49,7 @@ export default function Home() {
               <h4 className="text-xl font-semibold text-blue-700">{ev.title}</h4>
               <p className="text-gray-600 text-sm">{ev.date} • {ev.local}</p>
               <p className="mt-2 text-gray-700">{ev.desc}</p>
-              <button className="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
-                Saiba mais
-              </button>
+              <Link to="/events" className="inline-block mt-6 bg-blue-600 text-white py-2 px-5 rounded-lg hover:bg-blue-700 transition font-medium shadow-md hover:shadow-lg">Saiba mais</Link>
             </div>
           ))}
         </div>
