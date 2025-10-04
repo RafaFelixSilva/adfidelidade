@@ -41,7 +41,7 @@ export default function App() {
           <div className='flex justify-between items-center max-w-6xl mx-auto'>
             
             {/* Logo */}
-            <Link to='/'><img src='./src/images/logoAdFidelidade.jpg' alt='Ad Fidelidade Logo' className='h-10 w-auto hover:opacity-90 transition'/></Link>
+            <Link to='/'><img src='/logoAdFidelidade.jpg' alt='Ad Fidelidade Logo' className='h-10 w-auto hover:opacity-90 transition'/></Link>
             
             {/* Botão hamburguer */}
             <button
