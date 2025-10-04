@@ -31,7 +31,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative text-white text-center py-20 bg-center bg-cover" style={{backgroundImage:"url('/adFidelidadeLogoPreta.jpg')"}}>
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-black/80"></div>
       <div className="relative z-10">
         <h2 className="text-4xl font-bold mb-4">Bem-vindo à Igreja Ad Fidelidade</h2>
         <p className="text-lg max-w-2xl mx-auto">
