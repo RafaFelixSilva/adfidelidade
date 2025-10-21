@@ -18,9 +18,9 @@ export default function Home() {
     },
     {
       id: 3,
-      title: "Circulo de Oracao",
+      title: "Circulo de Oração",
       date: "Quarta-feira, 18h",
-      desc: "Oracao Online para todos os irmaos e irmas!",
+      desc: "Oração Online para todos os irmãos e irmãs!",
       local: "Google Meet",
     },
   ];
@@ -60,9 +60,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} Igreja Ad Fidelidade. Todos os direitos reservados.</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white">Facebook</a>
-            <a href="#" className="hover:text-white">YouTube</a>
-            <a href="#" className="hover:text-white">Instagram</a>
+            <a href="https://www.youtube.com/@ADFidelidadeLondres" className="hover:text-white" target="blank">YouTube</a>
+            <a href="https://www.instagram.com/adfidelidadelondres" className="hover:text-white" target="blank">Instagram</a>
           </div>
         </div>
       </footer>
