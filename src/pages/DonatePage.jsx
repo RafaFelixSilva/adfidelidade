@@ -24,7 +24,7 @@ export default function DonatePage() {
       <div className="mt-6">
         <h4 className="text-lg font-semibold text-blue-800 mb-3">Doação via QR Code (opcional)</h4>
         <img
-          src="/public/qr-code.png"
+          src="/qr-code.png"
           alt="QR Code para doação"
           className="mx-auto w-44 h-44 rounded-lg shadow-lg"
         />
