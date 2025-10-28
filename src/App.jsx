@@ -8,6 +8,7 @@ import EventsPage from './pages/EventsPage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
 import RehearsalsPage from './pages/RehearsalsPage.jsx';
 import AdminRehearsalsPage from './pages/AdminRehearsalsPage.jsx';
+import DonatePage from './pages/DonatePage.jsx';
 
 function Protected({ children }) {
   const stored = localStorage.getItem('sb-session');
@@ -155,8 +156,9 @@ export default function App() {
           <Route path="/admin/rehearsals" element={<Protected><AdminRehearsalsPage /></Protected>} />
           <Route path="/admin" element={<Protected><AdminPage /></Protected>} />
           <Route path="/live" element={<iframe title="YouTube Live" width="100%" height="480" src="https://www.youtube.com/embed/VrpsnKlyThg?si=DuI_5oD9wqYNhIQX" allowFullScreen />} />
-          <Route path="/donate" element={<a href="https://www.paypal.com/donate" target="_blank" className='inline-block mt-6 bg-blue-600 text-white py-2 px-5 rounded-lg hover:bg-blue-700 transition font-medium shadow-md hover:shadow-lg'>Ir para doações</a>} />
+          <Route path="/donate" element={<DonatePage />} />
         </Routes>
+
       </div>
     </div>  
   );
