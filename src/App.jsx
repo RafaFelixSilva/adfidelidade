@@ -9,6 +9,7 @@ import AdminPage from './pages/AdminPage.jsx';
 import RehearsalsPage from './pages/RehearsalsPage.jsx';
 import AdminRehearsalsPage from './pages/AdminRehearsalsPage.jsx';
 import DonatePage from './pages/DonatePage.jsx';
+import StockControlPage from './pages/StockControlPage.jsx';
 
 function Protected({ children }) {
   const stored = localStorage.getItem('sb-session');
@@ -90,6 +91,7 @@ export default function App() {
               {session ? (
                 <>
                   <Link className='hover:text-blue-600' to="/admin">Admin</Link>
+                  <Link className='hover:text-blue-600' to="/admin/estoque">Estoque</Link>
                   <button
                     onClick={() => supabase.auth.signOut()}
                     className='text-red-600 font-medium'
@@ -120,6 +122,7 @@ export default function App() {
                 <div className="ml-4 mt-2 flex flex-col gap-2">
                   <Link to="/rehearsals" className="hover:text-blue-600" onClick={() => setMenuOpen(false)}>Ensaios</Link>
                   <Link to="/admin/rehearsals" className="hover:text-blue-600" onClick={() => setMenuOpen(false)}>Admin Louvor</Link>
+                  <Link to="/admin/estoque" className='hover:text-blue-600' onClick={() => setMenuOpen(false)}>Estoque</Link>
                 </div>
               </details>
 
@@ -157,6 +160,7 @@ export default function App() {
           <Route path="/admin" element={<Protected><AdminPage /></Protected>} />
           <Route path="/live" element={<iframe title="YouTube Live" width="100%" height="480" src="https://www.youtube.com/embed/VrpsnKlyThg?si=DuI_5oD9wqYNhIQX" allowFullScreen />} />
           <Route path="/donate" element={<DonatePage />} />
+          <Route path="/admin/estoque" element={<Protected><StockControlPage /></Protected>}/>
         </Routes>
 
       </div>
