@@ -10,6 +10,7 @@ import RehearsalsPage from './pages/RehearsalsPage.jsx';
 import AdminRehearsalsPage from './pages/AdminRehearsalsPage.jsx';
 import DonatePage from './pages/DonatePage.jsx';
 import StockControlPage from './pages/StockControlPage.jsx';
+import AboutPage from './pages/AboutPage.jsx'; 
 
 function Protected({ children }) {
   const stored = localStorage.getItem('sb-session');
@@ -68,43 +69,75 @@ export default function App() {
             </button>
 
             {/* Menu Desktop */}
-            <nav className='hidden md:flex gap-6 items-center text-gray-700 font-medium'>
-              <Link className='hover:text-blue-600' to="/">Home</Link>
-              <Link className='hover:text-blue-600' to="/events">Eventos</Link>
-              <Link className='hover:text-blue-600' to="/volunteer">Inscrição de Voluntários</Link>
-              <Link className='hover:text-blue-600' to="/live">Ao Vivo</Link>
-              <Link className='hover:text-blue-600' to="/donate">Doações</Link>
+<nav className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
+  {/* Links principais */}
+  <Link className="hover:text-blue-600 transition-colors" to="/">Home</Link>
+  <Link className="hover:text-blue-600 transition-colors" to="/events">Eventos</Link>
+  <Link className="hover:text-blue-600 transition-colors" to="/volunteer">
+    Voluntariado
+  </Link>
+  <Link className="hover:text-blue-600 transition-colors" to="/live">Ao Vivo</Link>
+  <Link className="hover:text-blue-600 transition-colors" to="/donate">Doações</Link>
+  <Link className='hover:text-blue-600 transition-colors' to="/about">Sobre Nós</Link>
 
-              {/* Dropdown Louvor (desktop hover) */}
-              <div className="relative group">
-                <button className="hover:text-blue-600 flex items-center">Louvor ▾</button>
-                <div className="absolute left-0 hidden group-hover:block bg-white border shadow-lg rounded p-2 mt-1 min-w-[160px] z-50">
-                  <Link to="/rehearsals" className="block px-2 py-1 hover:bg-gray-100 rounded">
-                    Ensaios
-                  </Link>
-                  <Link to="/admin/rehearsals" className="block px-2 py-1 hover:bg-gray-100 rounded">
-                    Admin Louvor
-                  </Link>
-                </div>
-              </div>
+  {/* Dropdown Louvor */}
+  <div className="relative group">
+    <button className="hover:text-blue-600 flex items-center gap-1 transition-colors">
+      Louvor ▾
+    </button>
+    <div className="absolute left-0 hidden group-hover:block bg-white border border-gray-200 shadow-lg rounded-lg p-2 mt-2 w-44 z-50">
+      <Link
+        to="/rehearsals"
+        className="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition"
+      >
+        Ensaios
+      </Link>
+      {session && (
+        <Link
+          to="/admin/rehearsals"
+          className="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded transition"
+        >
+          Admin Louvor
+        </Link>
+      )}
+    </div>
+  </div>
 
-              {session ? (
-                <>
-                  <Link className='hover:text-blue-600' to="/admin">Admin</Link>
-                  <Link className='hover:text-blue-600' to="/admin/estoque">Estoque</Link>
-                  <button
-                    onClick={() => supabase.auth.signOut()}
-                    className='text-red-600 font-medium'
-                  >
-                    Sair
-                  </button>
-                </>
-              ) : (
-                <Link className='bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700' to="/auth">
-                  Entrar
-                </Link>
-              )}
-            </nav>
+  {/* Área do usuário */}
+  {session ? (
+    <>
+      <Link
+        className="hover:text-blue-600 transition-colors"
+        to="/admin"
+      >
+        Painel
+      </Link>
+      <Link
+        className="hover:text-blue-600 transition-colors"
+        to="/admin/estoque"
+      >
+        Estoque
+      </Link>
+      <button
+        onClick={async () => {
+          await supabase.auth.signOut();
+          localStorage.removeItem("sb-session");
+          window.location.href = "/auth";
+        }}
+        className="ml-2 text-red-600 font-semibold hover:text-red-700 transition"
+      >
+        Sair
+      </button>
+    </>
+  ) : (
+    <Link
+      className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition shadow-sm"
+      to="/auth"
+    >
+      Entrar
+    </Link>
+  )}
+</nav>
           </div>
 
           {/* Menu Mobile */}
@@ -115,20 +148,22 @@ export default function App() {
               <Link className="hover:text-blue-600" to="/volunteer" onClick={() => setMenuOpen(false)}>Inscrição de Voluntários</Link>
               <Link className="hover:text-blue-600" to="/live" onClick={() => setMenuOpen(false)}>Ao Vivo</Link>
               <Link className="hover:text-blue-600" to="/donate" onClick={() => setMenuOpen(false)}>Doações</Link>
+              <Link className='hover:text-blue-600' to="/about" onClick={() => setMenuOpen(false)}>Sobre Nós</Link>
 
               {/* Dropdown Louvor no mobile */}
               <details>
                 <summary className="cursor-pointer hover:text-blue-600">Louvor ▾</summary>
                 <div className="ml-4 mt-2 flex flex-col gap-2">
                   <Link to="/rehearsals" className="hover:text-blue-600" onClick={() => setMenuOpen(false)}>Ensaios</Link>
-                  <Link to="/admin/rehearsals" className="hover:text-blue-600" onClick={() => setMenuOpen(false)}>Admin Louvor</Link>
-                  <Link to="/admin/estoque" className='hover:text-blue-600' onClick={() => setMenuOpen(false)}>Estoque</Link>
+                  
                 </div>
               </details>
 
               {session ? (
                 <>
+                  <Link to="/admin/rehearsals" className="hover:text-blue-600" onClick={() => setMenuOpen(false)}>Admin Louvor</Link>
                   <Link className="hover:text-blue-600" to="/admin" onClick={() => setMenuOpen(false)}>Admin</Link>
+                  <Link to="/admin/estoque" className='hover:text-blue-600' onClick={() => setMenuOpen(false)}>Estoque</Link>
                   <button
                     onClick={() => { supabase.auth.signOut(); setMenuOpen(false); }}
                     className="text-red-600 font-medium"
@@ -161,6 +196,7 @@ export default function App() {
           <Route path="/live" element={<iframe title="YouTube Live" width="100%" height="480" src="https://www.youtube.com/embed/VrpsnKlyThg?si=DuI_5oD9wqYNhIQX" allowFullScreen />} />
           <Route path="/donate" element={<DonatePage />} />
           <Route path="/admin/estoque" element={<Protected><StockControlPage /></Protected>}/>
+          <Route path='/about' element={<AboutPage/>}/>
         </Routes>
 
       </div>
