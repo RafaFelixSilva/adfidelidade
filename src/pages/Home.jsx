@@ -54,17 +54,6 @@ export default function Home() {
           ))}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-gray-300 py-6 mt-12">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>© {new Date().getFullYear()} Igreja Ad Fidelidade. Todos os direitos reservados.</p>
-          <div className="flex gap-4">
-            <a href="https://www.youtube.com/@ADFidelidadeLondres" className="hover:text-white" target="blank">YouTube</a>
-            <a href="https://www.instagram.com/adfidelidadelondres" className="hover:text-white" target="blank">Instagram</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

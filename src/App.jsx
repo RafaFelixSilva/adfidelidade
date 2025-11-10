@@ -36,8 +36,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className='min-h-screen bg-gray-50'>  
-      <div className="max-w-5xl mx-auto p-4">
+    <div className='min-h-screen bg-gray-50 flex flex-col'>  
+      <div className="max-w-5xl mx-auto p-4 flex-1">
         
         {/* HEADER */}
         <header className='bg-white shadow p-4 rounded-lg mb-6'>
@@ -200,6 +200,16 @@ export default function App() {
         </Routes>
 
       </div>
+      {/* Footer */}
+      <footer className="bg-gray-800 text-gray-300 py-6 mt-12">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>© {new Date().getFullYear()} Igreja Ad Fidelidade. Todos os direitos reservados.</p>
+          <div className="flex gap-4">
+            <a href="https://www.youtube.com/@ADFidelidadeLondres" className="hover:text-white" target="blank">YouTube</a>
+            <a href="https://www.instagram.com/adfidelidadelondres" className="hover:text-white" target="blank">Instagram</a>
+          </div>
+        </div>
+      </footer>
     </div>  
   );
 }
