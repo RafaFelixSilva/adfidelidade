@@ -75,27 +75,27 @@ export default function StockControlPage() {
       </form>
 
       {/* Lista de itens */}
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="bg-blue-100 text-left">
-              <th className="p-2 border">Item</th>
-              <th className="p-2 border">Categoria</th>
-              <th className="p-2 border">Quantidade</th>
-              <th className="p-2 border text-center">Ações</th>
+      <div className="overflow-x-auto w-full">
+        <table className="table-auto w-full text-left border-collapse">
+          <thead className="bg-blue-600 text-white">
+            <tr>
+              <th className="p-3">Item</th>
+              <th className="p-3">Categoria</th>
+              <th className="p-3">Quantidade</th>
+              <th className="p-3">Ações</th>
             </tr>
           </thead>
           <tbody>
             {items.length > 0 ? (
               items.map((item) => (
-                <tr key={item.id} className="hover:bg-gray-50">
-                  <td className="p-2 border">{item.name}</td>
-                  <td className="p-2 border">{item.category}</td>
-                  <td className="p-2 border">{item.quantity}</td>
-                  <td className="p-2 border text-center">
+                <tr key={item.id} className="border-b hover:bg-gray-50">
+                  <td className="p-3">{item.name}</td>
+                  <td className="p-3">{item.category}</td>
+                  <td className="p-3">{item.quantity}</td>
+                  <td className="p-3 flex gap-2">
                     <button
                       onClick={() => deleteItem(item.id)}
-                      className="text-red-600 hover:text-red-800"
+                      className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
                     >
                       Excluir
                     </button>
