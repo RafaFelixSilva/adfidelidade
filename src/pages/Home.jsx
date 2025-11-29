@@ -29,6 +29,7 @@ export default function Home() {
       date: "Quinta-feira, 20h",
       desc: "Venha adorar conosco e aprender a palavra de Deus.",
       local: "Igreja Ad Fidelidade - Auditório Principal",
+      image_url: "/cultoDaPalavra.png"
     },
     {
       id: 2,
@@ -36,6 +37,7 @@ export default function Home() {
       date: "Sábado, 18h",
       desc: "Venha cultuar a Deus junto com a sua família e sentir a presença de Deus!",
       local: "Igreja Ad Fidelidade - Auditório Principal",
+      image_url: "/cultoDaFamilia.png"
     },
     {
       id: 3,
@@ -43,6 +45,7 @@ export default function Home() {
       date: "Quarta-feira, 18h",
       desc: "Oração Online para todos os irmãos e irmãs!",
       local: "Google Meet",
+      image_url: "/circuloOracao.png"
     },
   ];
 
@@ -92,7 +95,15 @@ export default function Home() {
               key={ev.id}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition"
             >
+              {/* IMAGEM DO EVENTO */}
+              <img
+                src={ev.image_url}
+                alt={ev.title}
+                className="w-full object-contain rounded-lg mb-3 shadow-sm"
+              />
+
               <h4 className="text-xl font-semibold text-blue-700">{ev.title}</h4>
+
               <p className="text-gray-600 text-sm">{ev.date} • {ev.local}</p>
               <p className="mt-2 text-gray-700">{ev.desc}</p>
 

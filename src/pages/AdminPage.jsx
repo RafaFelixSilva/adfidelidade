@@ -7,6 +7,7 @@ export default function AdminPage() {
   const [location, setLocation] = useState("");
   const [desc, setDesc] = useState("");
   const [list, setList] = useState([]);
+  const [imageFile, setImageFile] = useState(null);
 
   async function load() {
     const { data, error } = await supabase
@@ -23,20 +24,48 @@ export default function AdminPage() {
 
   async function createEvent(e) {
     e.preventDefault();
-    const { error } = await supabase.from("events").insert({
-      title,
-      description: desc,
-      starts_at: new Date(startsAt).toISOString(),
-      location,
-    });
-    if (error) alert(error.message);
-    else {
-      setTitle("");
-      setDesc("");
-      setLocation("");
-      setStartsAt("");
-      load();
+    
+    let imageUrl = null;
+
+    // 1️⃣ Se o usuário escolheu uma imagem, fazer upload
+    if (imageFile) {
+      const ext = imageFile.name.split(".").pop();
+      const fileName = `event-${Date.now()}.${ext}`;
+
+      const { data: uploadData, error: uploadError } = await supabase.storage
+      .from("event-images")
+      .upload(fileName, imageFile);
+
+      if (uploadError) {
+        alert("Erro ao fazer upload da imagem.");
+        console.log(uploadError);
+      } else {
+        imageUrl = supabase.storage
+        .from("event-images")
+        .getPublicUrl(fileName).data.publicUrl;
+      }
     }
+
+      // 2️⃣ Salvar evento no banco (com ou sem imagem)
+      const {error } = await supabase.from("events").insert({
+        title,
+        description: desc,
+        starts_at: new Date(startsAt).toISOString(),
+        location,
+        image_url: imageUrl, // pode ser null :)
+      });
+
+      if (error) {
+        alert(error.message);
+      } else {
+        alert("Evento criado com sucesso!!");
+        setTitle(""),
+        setDesc(""),
+        setLocation(""),
+        setStartsAt(""),
+        setImageFile(null),
+        load();
+      }
   }
 
   async function remove(id) {
@@ -62,6 +91,12 @@ export default function AdminPage() {
             className="p-2 border rounded"
             value={startsAt}
             onChange={(e) => setStartsAt(e.target.value)}
+          />
+          <input 
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImageFile(e.target.files[0])}
+            className="border p-2 rounded"
           />
           <input
             className="p-2 border rounded"
