@@ -16,41 +16,64 @@ export default function EventsPage() {
   }, []);
 
   return (
-   <div>
-  <h1 className="text-2xl font-bold mb-4 text-blue-700">Eventos</h1>
+    <div>
+      <h1 className="text-2xl font-bold mb-4 text-blue-700">Eventos</h1>
 
-  {events.length === 0 ? (
-    <p className="text-gray-500">Nenhum evento disponível.</p>
-  ) : (
-    <ul className="space-y-4">
-      {events.map((ev) => {
-        // ✅ Converte e formata a data/hora
-        const dateObj = new Date(ev.starts_at);
-        const dataFormatada = dateObj.toLocaleDateString("pt-BR", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        });
-        const horaFormatada = dateObj.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
+      {events.length === 0 ? (
+        <p className="text-gray-500">Nenhum evento disponível.</p>
+      ) : (
+        <ul className="space-y-6">
+          {events.map((ev) => {
+            // Formatando data
+            const dateObj = new Date(ev.starts_at);
+            const dataFormatada = dateObj.toLocaleDateString("pt-BR", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            });
+            const horaFormatada = dateObj.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            });
 
-        return (
-          <li key={ev.id} className="p-4 bg-white shadow rounded-lg border border-gray-100">
-            <h2 className="text-lg font-semibold text-blue-800 mb-1">{ev.title}</h2>
-            <p className="text-gray-700">
-              📅 {dataFormatada} — 🕒 {horaFormatada}
-            </p>
-            <p className="text-gray-600 mt-1">📍 {ev.location}</p>
-            {ev.description && (
-              <p className="text-gray-500 mt-2 leading-relaxed">{ev.description}</p>
-            )}
-          </li>
-        );
-      })}
-    </ul>
-  )}
-</div>
+            return (
+              <li
+                key={ev.id}
+                className="bg-white rounded-xl shadow-md border border-gray-100 p-5 flex flex-col gap-3"
+              >
+                {/* ⭐ IMAGEM DO EVENTO - NOVO */}
+                <img
+                  src={ev.image_url || "/placeholderImage.png"}
+                  alt={ev.title}
+                  className="w-full h-64 object-cover rounded-lg shadow-sm"
+                />
+
+                {/* Título */}
+                <h2 className="text-xl font-bold text-blue-800">
+                  {ev.title}
+                </h2>
+
+                {/* Data e hora */}
+                <p className="text-gray-700 text-sm">
+                  📅 {dataFormatada} — 🕒 {horaFormatada}
+                </p>
+
+                {/* Local */}
+                <p className="text-gray-600 text-sm">
+                  📍 {ev.location}
+                </p>
+
+                {/* Descrição */}
+                {ev.description && (
+                  <p className="text-gray-600 mt-1 leading-relaxed">
+                    {ev.description}
+                  </p>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
   );
 }

@@ -126,7 +126,7 @@ export default function Home() {
 
               {/* IMAGEM DO EVENTO */}
               <img
-                src={nextEvent.image_url || "/campanhaJejum.png"}
+                src={nextEvent.image_url || "/placeholderImage.png"}
                 className="w-full h-52 object-cover rounded-lg mb-4 shadow-md"
                 alt="Imagem do Evento"
               />
