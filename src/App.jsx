@@ -11,6 +11,7 @@ import AdminRehearsalsPage from './pages/AdminRehearsalsPage.jsx';
 import DonatePage from './pages/DonatePage.jsx';
 import StockControlPage from './pages/StockControlPage.jsx';
 import AboutPage from './pages/AboutPage.jsx'; 
+import AdminVolunteersPage from './pages/AdminVolunteersPage.jsx';
 
 function Protected({ children }) {
   const stored = localStorage.getItem('sb-session');
@@ -118,6 +119,12 @@ export default function App() {
       >
         Estoque
       </Link>
+      <Link
+        className='hover:text-blue-600 transitions-colors'
+        to='/admin/voluntarios'
+      >
+        Voluntários
+      </Link>
       <button
         onClick={async () => {
           await supabase.auth.signOut();
@@ -164,6 +171,7 @@ export default function App() {
                   <Link to="/admin/rehearsals" className="hover:text-blue-600" onClick={() => setMenuOpen(false)}>Admin Louvor</Link>
                   <Link className="hover:text-blue-600" to="/admin" onClick={() => setMenuOpen(false)}>Admin</Link>
                   <Link to="/admin/estoque" className='hover:text-blue-600' onClick={() => setMenuOpen(false)}>Estoque</Link>
+                  <Link to='/admin/voluntarios' className='hover:text-blue-600' onClick={() => setMenuOpen(false)}>Voluntários</Link>
                   <button
                     onClick={() => { supabase.auth.signOut(); setMenuOpen(false); }}
                     className="text-red-600 font-medium"
@@ -197,6 +205,7 @@ export default function App() {
           <Route path="/donate" element={<DonatePage />} />
           <Route path="/admin/estoque" element={<Protected><StockControlPage /></Protected>}/>
           <Route path='/about' element={<AboutPage/>}/>
+          <Route path='/admin/voluntarios' element={<Protected><AdminVolunteersPage /></Protected>}/>
         </Routes>
 
       </div>
