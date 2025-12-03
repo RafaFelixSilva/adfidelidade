@@ -54,8 +54,8 @@ export default function AdminVolunteersPage() {
       />
 
       {/* Tabela */}
-      <div className="overflow-x-auto shadow rounded-lg">
-        <table className="w-full bg-white">
+      <div className="w-full overflow-x-auto shadow rounded-lg">
+        <table className="min-w-max w-full bg-white border-separate border-spacing-0">
           <thead className="bg-blue-600 text-white">
             <tr>
               <th className="p-3 text-left">Nome</th>
